@@ -44,6 +44,7 @@ services:
     container_name: cassandra-server
     ports:
       - "7000:7000"
+      - "9042:9042"
     networks:
       - spark-cluster
     

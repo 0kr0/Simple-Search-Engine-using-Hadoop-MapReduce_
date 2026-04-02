@@ -9,8 +9,9 @@ bash start-services.sh
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Install any packages
-pip install -r requirements.txt  
+# Install any packages (wheel avoids bdist_wheel errors; fresh pip helps find binary wheels)
+pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt
 
 # Package the virtual env.
 venv-pack -o .venv.tar.gz

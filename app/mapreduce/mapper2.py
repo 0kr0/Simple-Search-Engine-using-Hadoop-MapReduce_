@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MapReduce mapper: TSV lines doc_id\\ttitle\\ttext -> term\\tdoc_id\\t1."""
+"""MapReduce mapper: doc line -> doc_id\\t(doc_length)\\t(title) for doc stats."""
 from __future__ import annotations
 
 import re
@@ -21,11 +21,9 @@ def main() -> None:
         if len(parts) < 3:
             continue
         doc_id, title, text = parts[0], parts[1], parts[2]
-        terms = tokenize(title) + tokenize(text)
-        if not terms:
-            continue
-        for w in terms:
-            sys.stdout.write(f"{w}\t{doc_id}\t1\n")
+        dl = len(tokenize(title) + tokenize(text))
+        title_clean = title.replace("\t", " ").replace("\r", " ").replace("\n", " ")
+        sys.stdout.write(f"{doc_id}\t{dl}\t{title_clean}\n")
 
 
 if __name__ == "__main__":

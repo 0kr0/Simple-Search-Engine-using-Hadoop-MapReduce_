@@ -1,6 +1,11 @@
 */kaggle.json
+# Course assignment PDF (keep locally, not for public repo)
+BS - Assignment 2 - Simple Search Engine using Hadoop MapReduce - CodiMD.pdf
 *.parquet
 .venv.tar.gz
+
+# Generated corpus (keep a.parquet locally; see app/data/.gitkeep)
+app/data/*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
